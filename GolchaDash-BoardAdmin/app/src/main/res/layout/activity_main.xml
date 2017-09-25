@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.golchaminerals.golchadash_boardadmin.MainActivity">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/activityBg"
+        android:orientation="vertical"
+        android:weightSum="12" >
+
+        <TextView
+            android:id="@+id/lblclick"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="7dp"
+            android:layout_weight="1"
+            android:padding="2dp"
+            style="bold"
+            android:text="Upload Image to DashBoard"
+            android:textColor="#fff"
+            android:textSize="25dp"
+            android:typeface="sans" />
+
+        <EditText
+            android:id="@+id/edtname"
+            android:layout_width="256dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="#fff"
+            android:gravity="center"
+            android:hint="ENTER IMAGE NAME"
+            android:layout_margin="10dp"
+            android:textColor="@color/titleBarBg"
+            android:typeface="sans" />
+
+        <ProgressBar
+            android:id="@+id/progressBar1"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:gravity="center" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="2" >
+
+            <Button
+                android:id="@+id/btnchooseimage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:background="#2c3e50"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:text="CHOOSE IMAGE"
+                android:textColor="@color/white"
+                android:typeface="sans" />
+
+            <Button
+                android:id="@+id/btnupload"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:layout_margin="2dp"
+                android:background="#34495e"
+                android:gravity="center"
+                android:text="UPLOAD"
+                android:textColor="@color/white"
+                android:typeface="sans" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="5dp"
+            android:layout_weight="8" />
+
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
