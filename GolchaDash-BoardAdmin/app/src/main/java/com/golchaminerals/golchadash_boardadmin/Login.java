@@ -100,7 +100,7 @@ public class Login extends ParentClass {
 
             try {
                 Class.forName("net.sourceforge.jtds.jdbc.Driver").newInstance();
-                Connection connection = DriverManager.getConnection("jdbc:jtds:sqlserver://182.19.11.77:1433;user=" + userName + ";password=" + passWord2);
+                Connection connection = DriverManager.getConnection("jdbc:jtds:sqlserver://45.114.141.43:1433;user=" + userName + ";password=" + passWord2);
                 Log.i("Connection  Login", " Connection Open Now");
                 if (connection == null) {
                     connectionFailed = true;

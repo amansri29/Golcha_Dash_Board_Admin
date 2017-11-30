@@ -11,13 +11,12 @@ public class StartupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         boolean loggedIn = sharedPrefs.getBoolean("LoggedIn", false);
 
         if(loggedIn)
         {
-            Intent i = new Intent(StartupActivity.this, MainActivity.class);
+            Intent i = new Intent(StartupActivity.this, UploadedImage.class);
             startActivity(i);
             finish();
         }

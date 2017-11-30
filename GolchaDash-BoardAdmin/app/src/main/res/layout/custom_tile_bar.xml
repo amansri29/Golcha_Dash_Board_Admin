@@ -11,10 +11,9 @@
         android:padding="5dp"
         android:layout_alignParentLeft="true"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/title_titleBar"
-        android:gravity="center_vertical"
-        android:layout_marginTop="5dp"
+        android:gravity="center"
         android:textSize="18dp"
         android:textColor="@color/white"
         android:text="Golcha Dash-Board Admin"/>
@@ -23,7 +22,8 @@
 
     <ImageView
         android:id="@+id/logout"
-        android:src="@drawable/logout2"
+        android:padding="5dp"
+        android:src="@drawable/logouticon"
         android:layout_marginRight="10dp"
         android:layout_width="40dp"
         android:layout_height="match_parent" android:clickable="true"

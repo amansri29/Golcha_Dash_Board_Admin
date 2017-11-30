@@ -214,8 +214,10 @@ public class MainActivity extends ParentClass {
                 SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 String username = sharedPrefs.getString("UserName", "nu");
                 String password = sharedPrefs.getString("Password", "np");
-                connection = DriverManager.getConnection("jdbc:jtds:sqlserver://182.19.11.77:1433/ERPLIVE;user=" + username + ";password=" + password);
+                connection = DriverManager.getConnection("jdbc:jtds:sqlserver://45.114.141.43:1433/Demo Database NAV (9-0);user=" + username + ";password=" + password);
                 Log.i(TAG, " Connection Open Now");
+//                String commands = "INSERT INTO dbo.ImagesForGolchaDashBoard\n" +
+//                        "VALUES ('" + imageName + "','" + encodedImage + "','" + formattedDate + "')";
                 String commands = "INSERT INTO dbo.ImagesForGolchaDashBoard\n" +
                         "VALUES ('" + imageName + "','" + encodedImage + "','" + formattedDate + "')";
                 // encodedImage which is the Base64 String
@@ -236,6 +238,9 @@ public class MainActivity extends ParentClass {
                 Toast.makeText(MainActivity.this, "Successfully Uploaded", Toast.LENGTH_SHORT).show();
                 uploadStatus = false;
                 progressDialog.dismiss();
+                Intent intent = new Intent(MainActivity.this, UploadedImage.class);
+                startActivity(intent);
+                finish();
             } else {
                 Toast.makeText(MainActivity.this, "Error, Please try again", Toast.LENGTH_SHORT).show();
                 progressDialog.dismiss();

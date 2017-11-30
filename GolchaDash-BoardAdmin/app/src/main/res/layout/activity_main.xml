@@ -10,7 +10,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/activityBg"
+        android:background="#F5F5F5"
         android:orientation="vertical"
         android:weightSum="12" >
 
@@ -24,8 +24,8 @@
             android:padding="2dp"
             style="bold"
             android:text="Upload Image to DashBoard"
-            android:textColor="#fff"
-            android:textSize="25dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20dp"
             android:typeface="sans" />
 
         <EditText
@@ -34,11 +34,12 @@
             android:layout_height="0dp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:background="#fff"
+            android:background="#757575"
             android:gravity="center"
-            android:hint="ENTER IMAGE NAME"
+            android:hint="Enter Image Name"
+            android:textColorHint="#FAFAFA"
             android:layout_margin="10dp"
-            android:textColor="@color/titleBarBg"
+            android:textColor="@color/white"
             android:typeface="sans" />
 
         <ProgressBar
