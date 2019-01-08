@@ -111,7 +111,7 @@ public class Login extends ParentClass {
                     editor.putString("UserName", userName);
                     editor.putString("Password", passWord2);
                     editor.commit();
-                    Intent i = new Intent(Login.this, MainActivity.class);
+                    Intent i = new Intent(Login.this, UploadedImage.class);
                     startActivity(i);
                     finish();
                 }

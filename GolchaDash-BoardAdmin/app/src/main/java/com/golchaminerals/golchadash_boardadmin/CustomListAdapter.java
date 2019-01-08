@@ -58,10 +58,21 @@ public class CustomListAdapter extends ArrayAdapter<String> {
         ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
         Button delete = (Button) rowView.findViewById(R.id.delete_button);
 
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inSampleSize = 2;
         txtTitle.setText(itemname[position]);
         byte[] decodedString = Base64.decode(imgid[position], Base64.DEFAULT);
-        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length, options);
         imageView.setImageBitmap(decodedByte);
+
+
+
+//        BitmapFactory.Options options = new BitmapFactory.Options();
+//        options.inJustDecodeBounds = true;
+//        BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length, options);
+//        int imageHeight = options.outHeight;
+//        int imageWidth = options.outWidth;
+//        String imageType = options.outMimeType;
 
 //        imageView.setImageResource(imgid[position]);
 //        extratxt.setText("Description "+itemname[position]);

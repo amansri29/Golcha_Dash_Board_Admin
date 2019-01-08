@@ -2,7 +2,6 @@ package com.golchaminerals.golchadash_boardadmin;
 
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -12,11 +11,8 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Environment;
-import android.os.StrictMode;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.AndroidRuntimeException;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -24,27 +20,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOError;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.TimeZone;
 
-public class MainActivity extends ParentClass {
+public class UploadImage extends ParentClass {
 
     public static final int requestcode = 1;
     ImageView img;
@@ -55,15 +43,15 @@ public class MainActivity extends ParentClass {
     ProgressBar pg;
     boolean uploadStatus = false;
     Bitmap originBitmap = null;
-    private final String TAG = "MainActivity";
+    private final String TAG = "UploadImage";
     String imageName;
     ProgressDialog progressDialog;
     float dataSize = 0.0f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState, R.layout.activity_main);
-//        setContentView(R.layout.activity_main);
+        super.onCreate(savedInstanceState, R.layout.activity_upload_image);
+//        setContentView(R.layout.activity_upload_image);
         img = (ImageView) findViewById(R.id.imageview);
         btnupload = (Button) findViewById(R.id.btnupload);
         btnchooseimage = (Button) findViewById(R.id.btnchooseimage);
@@ -89,16 +77,16 @@ public class MainActivity extends ParentClass {
                 Log.i(TAG, "Internet Connectivity " + isConnected);
                 if (!isConnected)   // no internet connectivity
                 {
-                    Toast.makeText(MainActivity.this, "No Internet, Please check your internet connectivity.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UploadImage.this, "No Internet, Please check your internet connectivity.", Toast.LENGTH_SHORT).show();
                 } else {
                     if (imageName.trim().equals("")) {
-                        Toast.makeText(MainActivity.this, "Please give a name to image", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UploadImage.this, "Please give a name to image", Toast.LENGTH_SHORT).show();
                     } else {
                         if (originBitmap == null) {
-                            Toast.makeText(MainActivity.this, "Please choose an image.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UploadImage.this, "Please choose an image.", Toast.LENGTH_SHORT).show();
                         } else {
                             if (dataSize <= 1)  {
-                                progressDialog = new ProgressDialog(MainActivity.this);
+                                progressDialog = new ProgressDialog(UploadImage.this);
 //            progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                                 progressDialog.setMessage(" Uploading is in progress . . .");
                                 progressDialog.setCancelable(false);
@@ -109,7 +97,7 @@ public class MainActivity extends ParentClass {
                                 encodedImage = Base64.encodeToString(byteArray, Base64.DEFAULT);
                                 new uploadDataToServer().execute();
                             } else {
-                                Toast.makeText(MainActivity.this, "Please select an image which size is less than 1mb.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(UploadImage.this, "Please select an image which size is less than 1mb.", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
@@ -130,7 +118,7 @@ public class MainActivity extends ParentClass {
             startActivityForResult(intent, requestcode);
 
         } else {
-            Toast.makeText(MainActivity.this,
+            Toast.makeText(UploadImage.this,
                     "No activity found to perform this task",
                     Toast.LENGTH_SHORT).show();
 
@@ -235,14 +223,14 @@ public class MainActivity extends ParentClass {
         @Override
         protected void onPostExecute(Void unused) {
             if (uploadStatus) {
-                Toast.makeText(MainActivity.this, "Successfully Uploaded", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UploadImage.this, "Successfully Uploaded", Toast.LENGTH_SHORT).show();
                 uploadStatus = false;
                 progressDialog.dismiss();
-                Intent intent = new Intent(MainActivity.this, UploadedImage.class);
+                Intent intent = new Intent(UploadImage.this, UploadedImage.class);
                 startActivity(intent);
                 finish();
             } else {
-                Toast.makeText(MainActivity.this, "Error, Please try again", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UploadImage.this, "Error, Please try again", Toast.LENGTH_SHORT).show();
                 progressDialog.dismiss();
             }
         }
